@@ -75,3 +75,23 @@ def login_page(request):
 def logout_user(request):
     auth_logout(request)
     return redirect('login_page')
+
+@login_required
+def about(request):
+    return render(request, 'about.html')
+
+@login_required
+def pay(request):
+    return render(request, 'pay.html')
+
+
+@login_required
+def user_dls(request):
+    # nam = request.POST['nam']
+    # email = request.POST['email']
+    phone = request.POST['phone']
+    comments = request.POST['comments']
+    user_dls =[ phone, comments]
+    print(user_dls)
+    
+    return render(request, 'userd.html')

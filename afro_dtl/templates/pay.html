@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div id="sd">
+  <div class="form-floating mb-3" style="margin-left: 20px">
+    <input
+      type="email"
+      class="form-control"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Name</label>
+  </div>
+  <div class="form-floating mb-3" style="margin-left: 20px">
+    <textarea
+      class="form-control"
+      placeholder="Leave a comment here"
+      id="floatingTextareaDisabled"
+    ></textarea>
+    <label for="floatingTextareaDisabled">Email address</label>
+  </div>
+  <div class="form-floating mb-3" style="margin-left: 20px">
+    <textarea
+      class="form-control"
+      placeholder="Leave a comment here"
+      id="floatingTextarea2Disabled"
+      style="height: 100px"
+    ></textarea>
+    <label for="floatingTextarea2Disabled">Comments</label>
+  </div>
+  <div class="form-floating" style="margin-left: 20px">
+    <select
+      class="form-select"
+      id="floatingSelectDisabled"
+      aria-label="Floating label disabled select example"
+    >
+      <option selected>Email/Phone</option>
+      <option value="1">Email</option>
+      <option value="2">Phone</option>
+    </select>
+    <label for="floatingSelectDisabled">Feedback</label>
+  </div>
+  <button
+    type="button"
+    id="b"
+    class="btn btn-primary"
+    style="
+      --bs-btn-padding-y: 0.25rem;
+      --bs-btn-padding-x: 0.5rem;
+      --bs-btn-font-size: 0.75rem;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-left: 50px;
+      width: 20%;
+     
+    "
+  >
+    <a href="{% url 'index' %}">Submit</a> 
+  </button>
+</div>
+
+{% endblock %}
