@@ -1,43 +1,31 @@
-
+{% extends 'base.html' %}
+{% block content%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
-    <script src=""></script>
-    <title>{{ p_title }}</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                 <li class="navlink">{{user.name}}</li>
-                {% else %}
-                 <li class="navlink">Login</li>
-                {% endif %}
-               
-                <li id="logo">{{ p_title }}</li>
-                <li class="navlink">About</li>
-                <li class="navlink">Home</li>
-                
-            </ul>
-        </nav>
-    </header>
-    <div class="regdiv">
-        <form action="" id="reg_form">
-            <input placeholder="username" name="username" type="text">
-            <input placeholder="email" name="email" type="email">
-            <input placeholder="Password" name="password" type="password">
-            <input placeholder="Confirm Password" required="password" >
-            <input type="submit">
-        </form>
-    </div>
 
-    
-
-
-    <footer></footer>
-</body>
-</html>
+    <h1>My Custom Register Page.</h1>
+    <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">
+        <!-- csrf is a way to tell django that the posted data is within the same application.
+        it is also a security feature against SQL injection -->
+        {% csrf_token %}
+        <div class="regdiv">
+            <!-- all data captured within a form can be accessed in the views 
+            using the name of that field -->
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <br>
+            <input placeholder="Username" name="username" type="text"
+            required>
+            <br> 
+            <input placeholder="Email" name="user_email" type="email" required> 
+            <br>
+            <input placeholder="Password" name="password" type="password" required>
+            <br>
+            <input placeholder="Confirm Password" required="password" type="password"> 
+            <br> 
+            <input type="submit" class="button1" title="Signup" id="signupbtn"> 
+            
+        </div>
+    </form>
+{% endblock %}
